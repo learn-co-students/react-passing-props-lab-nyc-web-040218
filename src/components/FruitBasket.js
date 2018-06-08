@@ -14,8 +14,8 @@ class FruitBasket extends Component {
   render() {
     return (
       <div className="fruit-basket">
-        <Filter handleChange={this.props.handleChange} />
-        <FilteredFruitList filter={this.props.filter} />
+        <Filter handleChange={this.props.handleChange} filters={this.props.filters} />
+        <FilteredFruitList filter={this.props.selectedFilter} />
       </div>
     );
   }
