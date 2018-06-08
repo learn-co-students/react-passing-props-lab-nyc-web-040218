@@ -8,20 +8,20 @@ class FruitBasket extends Component {
     super();
 
     this.state = {
-      filters: [],
-      selectedFilter: null
+      // filters: [],
+      // selectedFilter: null
     };
   }
 
-  handleFilterChange = event => {
-    console.log('new filter: ', event.target.value);
-    this.setState({ selectedFilter: event.target.value });
-  }
+  // handleFilterChange = event => {
+  //   console.log('new filter: ', event.target.value);
+  //   this.setState({ selectedFilter: event.target.value });
+  // }
 
   render() {
     return (
       <div className="fruit-basket">
-        <Filter handleChange={this.handleFilterChange} />
+        <Filter handleChange={this.props.handleChange} />
         <FilteredFruitList
           filter={this.state.selectedFilter} />
       </div>
