@@ -15,7 +15,7 @@ class FruitBasket extends Component {
     return (
       <div className="fruit-basket">
         <Filter handleChange={this.props.handleChange} filters={this.props.filters} />
-        <FilteredFruitList filter={this.props.selectedFilter} />
+        <FilteredFruitList filter={this.props.selectedFilter} items={this.props.items} />
       </div>
     );
   }

@@ -8,19 +8,26 @@ class App extends Component {
 
         this.state = {
             filters: [],
-            selectedFilter: null
+            selectedFilter: null,
+            items: []
         }
     }
 
     componentWillMount() {
         this.fetchFilters();
-      }
+    }
+
+    componentDidMount() {
+    fetch('/api/fruit')
+        .then(response => response.json())
+        .then(items => this.setState({ items }));
+    }
     
-      fetchFilters = () => {
-        fetch('/api/fruit_types')
-          .then(response => response.json())
-          .then(filters => this.setState({ filters }));
-      }
+    fetchFilters = () => {
+    fetch('/api/fruit_types')
+        .then(response => response.json())
+        .then(filters => this.setState({ filters }));
+    }
 
     handleFilterChange = event => {
         console.log('new filter: ', event.target.value);
@@ -29,7 +36,7 @@ class App extends Component {
 
     render() {
         return (
-            <FruitBasket handleChange={this.handleFilterChange} selectedFilter={this.state.selectedFilter} filters={this.state.filters} />
+            <FruitBasket handleChange={this.handleFilterChange} selectedFilter={this.state.selectedFilter} filters={this.state.filters} items={this.state.items} />
         )
     }
 }
