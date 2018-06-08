@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class Filter extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       filters: []
@@ -10,20 +10,20 @@ class Filter extends Component {
   }
 
   componentWillMount() {
-    this.fetchFilters();
+    this.fetchFilters(this.props);
   }
 
-  fetchFilters = () => {
+  fetchFilters = (props) => {
     fetch('/api/fruit_types')
       .then(response => response.json())
-      .then(filters => this.setState({ filters }));
+      .then(filters => props.setFilters(filters));
   }
 
   render() {
     return (
       <select onChange={this.props.handleChange} defaultValue='all'>
         <option value='all'>All</option>
-        {this.state.filters.map(filter =>
+        {this.props.getFilters().map(filter =>
           <option key={filter} value={filter}>{filter}</option>
         )}
       </select>

@@ -4,8 +4,8 @@ import Filter from './Filter';
 import FilteredFruitList from './FilteredFruitList.js';
 
 class FruitBasket extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       filters: [],
@@ -15,15 +15,20 @@ class FruitBasket extends Component {
 
   handleFilterChange = event => {
     console.log('new filter: ', event.target.value);
-    this.setState({ selectedFilter: event.target.value });
+    this.props.setSelectedFilter(event.target.value);
   }
 
   render() {
     return (
       <div className="fruit-basket">
-        <Filter handleChange={this.handleFilterChange} />
+        <Filter
+          handleChange={this.handleFilterChange}
+          setFilters={this.props.setFilters}
+          getFilters={this.props.getFilters}
+        />
         <FilteredFruitList
-          filter={this.state.selectedFilter} />
+          getSelectedFilter={this.props.getSelectedFilter}
+        />
       </div>
     );
   }

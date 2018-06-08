@@ -10,13 +10,17 @@ class FilteredFruitList extends Component {
   }
 
   componentDidMount() {
+    this.fetchFilters(this.props)
+  }
+
+  fetchFilters = (props) => {
     fetch('/api/fruit')
       .then(response => response.json())
-      .then(items => this.setState({ items }));
+      .then(items => props.setItems(items));
   }
 
   render() {
-    const list = !this.props.filter || this.props.filter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
+    const list = !this.props.getSelectedFilter() || this.props.getSelectedFilter() === 'all' ? this.state.items : this.props.getItems().setSelectedFilter(i => i.fruit_type === this.props.getSelectedFilter());
 
     return (
       <ul className="fruit-list">
