@@ -31,7 +31,6 @@ class App extends Component {
     }
 
     handleFilterChange = event => {
-        console.log('new filter: ', event.target.value);
         this.setState({ selectedFilter: event.target.value });
     }
 
