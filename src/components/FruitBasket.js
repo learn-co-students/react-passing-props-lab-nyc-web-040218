@@ -8,6 +8,8 @@ class FruitBasket extends Component {
     super();
 
     this.state = {
+      // filters: [],
+      // selectedFilter: null
     };
   }
 
@@ -15,8 +17,7 @@ class FruitBasket extends Component {
     return (
       <div className="fruit-basket">
         <Filter handleChange={this.props.handleChange} />
-        <FilteredFruitList
-          filter={this.state.selectedFilter} />
+        <FilteredFruitList filter={this.props.filter} />
       </div>
     );
   }

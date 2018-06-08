@@ -19,7 +19,7 @@ class App extends Component {
 
     render() {
         return (
-            <FruitBasket handleChange={this.handleFilterChange} />
+            <FruitBasket handleChange={this.handleFilterChange} filter={this.state.selectedFilter} />
         )
     }
 }
