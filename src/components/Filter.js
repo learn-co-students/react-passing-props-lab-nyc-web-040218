@@ -1,23 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Filter extends Component {
-  constructor() {
-    super();
-
-    // this.state = {
-    // };
-  }
-
-  render() {
-    return (
-      <select onChange={this.props.handleChange} defaultValue='all'>
+const Filter = ({ filters, handleChange }) => 
+      <select onChange={handleChange} defaultValue='all'>
         <option value='all'>All</option>
-        {this.props.filters.map(filter =>
+        {filters.map(filter =>
           <option key={filter} value={filter}>{filter}</option>
         )}
-      </select>
-    );
-  }
-}
+      </select>;
+
+Filter.defaultProps = {
+  filters: [],
+  handleChange: function(){}
+};
 
 export default Filter;
