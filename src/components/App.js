@@ -9,7 +9,9 @@ class App extends Component {
         this.state = {
             filters: [],
             selectedFilter: null,
-            items: []
+            items: [],
+            fruit: [],
+            currentFilter: null
         }
     }
 
