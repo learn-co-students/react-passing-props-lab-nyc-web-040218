@@ -8,8 +8,6 @@ class FruitBasket extends Component {
     super();
 
     this.state = {
-      // filters: [],
-      // selectedFilter: null
     };
   }
 
