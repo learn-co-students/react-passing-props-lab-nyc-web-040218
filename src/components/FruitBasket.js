@@ -3,30 +3,25 @@ import React, { Component }  from 'react';
 import Filter from './Filter';
 import FilteredFruitList from './FilteredFruitList.js';
 
-class FruitBasket extends Component {
-  constructor() {
-    super();
+const FruitBasket = (props) => {
 
-    this.state = {
-      filters: [],
-      selectedFilter: null
-    };
-  }
-
-  handleFilterChange = event => {
-    console.log('new filter: ', event.target.value);
-    this.setState({ selectedFilter: event.target.value });
-  }
-
-  render() {
     return (
       <div className="fruit-basket">
-        <Filter handleChange={this.handleFilterChange} />
+        <Filter handleChange={props.handleFilterChange} filters={props.filter} />
         <FilteredFruitList
-          filter={this.state.selectedFilter} />
+          filters={props.filter}
+          filter={props.selected}
+          itemList={props.items}
+          />
       </div>
     );
-  }
+}
+
+FruitBasket.defaultProps = {
+  fruit: [],
+  filters: [],
+  currentFilter: null,
+  updateFilterCallback: null
 }
 
 export default FruitBasket;
